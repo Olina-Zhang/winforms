@@ -12,5 +12,22 @@ public partial class Form1 : Form
     public Form1()
     {
         InitializeComponent();
+
+        CheckPrinterColorSettings();
+    }
+
+    private void CheckPrinterColorSettings()
+    {
+        string output = "";
+
+        var printersettingPrintToPdf = new System.Drawing.Printing.PrinterSettings
+        {
+            PrinterName = "Microsoft Print to PDF"
+        };
+
+        // returns false instead of true.
+        output += $"PDF Printer ({printersettingPrintToPdf.PrinterName}): {printersettingPrintToPdf.DefaultPageSettings.Color}\r\n";
+
+        textBox1.Text = output;
     }
 }
